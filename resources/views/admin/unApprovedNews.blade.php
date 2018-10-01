@@ -1,0 +1,36 @@
+
+@extends('admin/layouts.adminMaster')
+
+@section('content')
+
+    <div class="container-fluid">
+    @include('admin/includes.adminSidebar')
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+
+            <h1>News Needs Approval</h1>
+            <div class="row">
+             @foreach($news_record as $news)
+                <div class="col-lg-4">
+                    <div class="card" style="width: 20rem; margin-bottom:20px;">
+                        <div class="card-block">
+                            <h5 class="card-title">{{$news->title}}</h5>
+                        </div>
+                        <div class="card-block">
+                            <a href="{{route('edit',[$news->id])}}" class="card-link">Edit</a>
+                            <a href="delete/{{$news->id}}" class="card-link text-danger">Delete</a>
+                            <a href="{{route('approve',$news->id)}}" class="card-link text-link">approve</a>
+
+                        </div>
+                        </div>
+                </div>
+            @endforeach
+            </div>
+        </main>
+</div>
+
+
+
+
+    @endsection('content')
